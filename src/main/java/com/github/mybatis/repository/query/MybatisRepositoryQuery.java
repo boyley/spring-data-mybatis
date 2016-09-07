@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Parameter;
 import org.springframework.data.repository.query.Parameters;
 import org.springframework.data.repository.query.QueryMethod;
 import org.springframework.data.repository.query.RepositoryQuery;
+import org.springframework.util.ReflectionUtils;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -55,8 +56,9 @@ public class MybatisRepositoryQuery implements RepositoryQuery {
         } else if (method.isQueryForEntity()) {
             return sqlSessionTemplate.selectOne(mappedStatementId, params);
         }
-
-        return sqlSessionTemplate.selectOne(mappedStatementId, params);
+        return ReflectionUtils
+                .invokeMethod(method.getMethod(), sqlSessionTemplate.getMapper(method.getRepositoryInterface()), parameters);
+//        return sqlSessionTemplate.selectOne(mappedStatementId, params);
 
     }
 

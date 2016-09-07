@@ -13,7 +13,7 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package com.github.mybatis.repository.config;
+package com.github.mybatis.repository.autoconfig;
 
 import org.apache.ibatis.io.VFS;
 import org.springframework.core.io.Resource;
