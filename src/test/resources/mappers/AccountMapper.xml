@@ -15,4 +15,10 @@
         from sys_account
         where id = #{id,jdbcType=INTEGER}
     </select>
+
+    <select id="_selectByPager" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List"/>
+        from sys_account
+    </select>
 </mapper>
